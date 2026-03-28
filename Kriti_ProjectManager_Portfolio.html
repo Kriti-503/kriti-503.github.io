@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kriti Tripathy — Project Manager</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:       #0e1520;
+    --bg2:      #131d2e;
+    --bg3:      #192436;
+    --bg4:      #1e2d42;
+    --border:   rgba(255,255,255,0.07);
+    --border2:  rgba(255,255,255,0.12);
+    --blue:     #4f8ef7;
+    --blue-dim: #3a72d8;
+    --blue-pale:#1a3560;
+    --sky:      #7eb8f7;
+    --teal:     #38b2ac;
+    --text:     #e8eef8;
+    --text-sub: #94a3b8;
+    --text-dim: #4a5c75;
+    --gold:     #c9a84c;
+  }
+
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Outfit', sans-serif;
+    font-weight: 400;
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top:0; left:0; right:0; z-index:100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.1rem 4rem;
+    background: rgba(14,21,32,0.92);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: 0.03em;
+  }
+  .nav-brand span { color: var(--blue); }
+  .nav-links { display:flex; gap:2.5rem; list-style:none; }
+  .nav-links a {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text-sub);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--text); }
+  .nav-status {
+    display: flex; align-items: center; gap: 0.6rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--text-sub);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .status-dot {
+    width: 7px; height: 7px;
+    background: var(--teal);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--teal);
+    animation: pulse 2.5s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 9rem 4rem 5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Subtle radial backdrop */
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -10%; left: -5%;
+    width: 70%; height: 100%;
+    background: radial-gradient(ellipse at 25% 40%, rgba(79,142,247,0.07) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  /* Thin vertical rule lines */
+  .hero-rules {
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 119px,
+      rgba(255,255,255,0.025) 119px,
+      rgba(255,255,255,0.025) 120px
+    );
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    position: relative; z-index: 1;
+    max-width: 780px;
+  }
+
+  .hero-kicker {
+    display: inline-flex; align-items: center; gap: 0.75rem;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--blue);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    padding: 0.45rem 1.1rem;
+    border: 1px solid rgba(79,142,247,0.25);
+    background: rgba(79,142,247,0.05);
+  }
+  .hero-kicker::before {
+    content: '';
+    width: 20px; height: 1px;
+    background: var(--blue);
+  }
+
+  .hero-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.8rem, 8vw, 7rem);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+  }
+  .hero-name .first { color: var(--text); display: block; }
+  .hero-name .last  { color: var(--blue); display: block; font-style: italic; }
+
+  .hero-tagline {
+    font-size: 1.05rem;
+    font-weight: 300;
+    color: var(--text-sub);
+    margin-bottom: 2.5rem;
+    line-height: 1.7;
+    max-width: 540px;
+    border-left: 2px solid var(--blue-pale);
+    padding-left: 1.25rem;
+  }
+  .hero-tagline strong { color: var(--text); font-weight: 600; }
+
+  .hero-chips {
+    display: flex; flex-wrap: wrap; gap: 0.6rem;
+    margin-bottom: 3rem;
+  }
+  .chip {
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: var(--text-sub);
+    border: 1px solid var(--border2);
+    padding: 0.35rem 0.9rem;
+    letter-spacing: 0.04em;
+    transition: all 0.2s;
+  }
+  .chip:hover { border-color: var(--blue); color: var(--sky); }
+
+  .hero-stats {
+    display: flex; gap: 3.5rem;
+    margin-bottom: 3rem;
+    padding: 2rem 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .stat-val {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+  .stat-val em { color: var(--blue); font-style: normal; }
+  .stat-desc {
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: var(--text-dim);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .hero-btns { display:flex; gap:1rem; flex-wrap:wrap; }
+  .btn-solid {
+    background: var(--blue);
+    color: #fff;
+    padding: 0.85rem 2.2rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+    display: inline-flex; align-items: center; gap:0.5rem;
+  }
+  .btn-solid:hover { background: var(--blue-dim); transform: translateY(-2px); }
+  .btn-line {
+    border: 1px solid var(--border2);
+    color: var(--text-sub);
+    padding: 0.85rem 2.2rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .btn-line:hover { border-color: var(--blue); color: var(--sky); }
+
+  /* ── SHARED SECTION ── */
+  .section { padding: 6rem 4rem; }
+  .section-alt { background: var(--bg2); border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+
+  .sec-label {
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: var(--blue);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .sec-label::before { content:''; width:24px; height:1px; background:var(--blue); }
+
+  .sec-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 3rem;
+    color: var(--text);
+  }
+  .sec-title em { font-style: italic; color: var(--sky); }
+
+  /* ── COMPETENCIES ── */
+  .comp-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+  .comp-card {
+    background: var(--bg2);
+    padding: 2.2rem 2rem;
+    transition: background 0.2s;
+    position: relative;
+  }
+  .comp-card:hover { background: var(--bg3); }
+  .comp-card::after {
+    content:'';
+    position:absolute;
+    top:0; left:0; right:0;
+    height: 2px;
+    background: var(--blue);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .comp-card:hover::after { transform: scaleX(1); }
+
+  .comp-num {
+    font-size: 0.6rem;
+    font-weight: 600;
+    color: var(--text-dim);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 1.25rem;
+  }
+  .comp-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+  }
+  .comp-desc {
+    font-size: 0.8rem;
+    color: var(--text-sub);
+    line-height: 1.75;
+    margin-bottom: 1.25rem;
+    font-weight: 300;
+  }
+  .comp-tags { display:flex; flex-wrap:wrap; gap:0.4rem; }
+  .ctag {
+    font-size: 0.62rem;
+    font-weight: 500;
+    color: var(--blue);
+    background: rgba(79,142,247,0.08);
+    border: 1px solid rgba(79,142,247,0.18);
+    padding: 0.2rem 0.6rem;
+    letter-spacing: 0.04em;
+  }
+
+  /* ── EXPERIENCE ── */
+  .exp-list { display:flex; flex-direction:column; gap:0; }
+
+  .exp-row {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    border: 1px solid var(--border);
+    margin-top: -1px;
+    transition: border-color 0.3s;
+  }
+  .exp-row:hover { border-color: var(--border2); z-index:1; position:relative; }
+
+  .exp-meta {
+    padding: 2.5rem 2rem;
+    border-right: 1px solid var(--border);
+    background: var(--bg2);
+  }
+  .exp-period {
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: var(--blue);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+  }
+  .exp-org {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 0.3rem;
+  }
+  .exp-place {
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    font-weight: 400;
+  }
+
+  .exp-body { padding: 2.5rem; }
+  .exp-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 1.25rem;
+    line-height: 1.2;
+  }
+
+  .exp-points { list-style:none; }
+  .exp-points li {
+    font-size: 0.82rem;
+    font-weight: 300;
+    color: var(--text-sub);
+    line-height: 1.8;
+    padding: 0.4rem 0 0.4rem 1.1rem;
+    position: relative;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+  }
+  .exp-points li:last-child { border-bottom:none; }
+  .exp-points li::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 50%;
+    width: 4px; height: 4px;
+    background: var(--blue);
+    transform: translateY(-50%);
+  }
+
+  /* ── CERTIFICATIONS ── */
+  .certs-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .cert-tile {
+    border: 1px solid var(--border);
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s, background 0.3s;
+  }
+  .cert-tile:hover { border-color: var(--border2); background: var(--bg2); }
+  .cert-tile-accent {
+    position: absolute;
+    top:0; left:0;
+    width: 3px; height: 100%;
+    background: linear-gradient(to bottom, var(--blue), var(--teal));
+  }
+  .cert-id {
+    font-size: 0.6rem;
+    font-weight: 600;
+    color: var(--text-dim);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+  }
+  .cert-name {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.4;
+    margin-bottom: 0.75rem;
+  }
+  .cert-issuer {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--blue);
+    margin-bottom: 0.3rem;
+  }
+  .cert-year { font-size:0.68rem; color:var(--text-dim); }
+  .cert-badge {
+    display: inline-block;
+    margin-top: 1rem;
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.65rem;
+    border: 1px solid rgba(56,178,172,0.35);
+    color: var(--teal);
+    background: rgba(56,178,172,0.06);
+  }
+  .cert-badge.pending {
+    border-color: rgba(201,168,76,0.35);
+    color: var(--gold);
+    background: rgba(201,168,76,0.06);
+  }
+
+  /* ── CASE STUDY ── */
+  .case-wrapper {
+    border: 1px solid var(--border);
+    margin-top: 0.5rem;
+  }
+  .case-header {
+    padding: 3rem;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg3);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2rem;
+    align-items: start;
+  }
+  .case-pill {
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: var(--gold);
+    border: 1px solid rgba(201,168,76,0.3);
+    background: rgba(201,168,76,0.05);
+    padding: 0.3rem 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+    display: inline-block;
+  }
+  .case-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.6rem;
+    line-height: 1.2;
+  }
+  .case-sub {
+    font-size: 0.82rem;
+    font-weight: 300;
+    color: var(--text-sub);
+    line-height: 1.7;
+    max-width: 550px;
+  }
+  .case-meta-block {
+    min-width: 180px;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    padding: 1.5rem;
+  }
+  .cmb-row {
+    padding: 0.7rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .cmb-row:last-child { border-bottom:none; padding-bottom:0; }
+  .cmb-label { font-size:0.58rem; font-weight:600; color:var(--text-dim); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:0.2rem; }
+  .cmb-val { font-size:0.78rem; font-weight:500; color:var(--sky); }
+
+  .phases-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-bottom: 1px solid var(--border);
+  }
+  .phase {
+    padding: 2.5rem 2rem;
+    border-right: 1px solid var(--border);
+    transition: background 0.2s;
+  }
+  .phase:last-child { border-right:none; }
+  .phase:hover { background: var(--bg3); }
+  .phase-num {
+    font-size: 0.58rem;
+    font-weight:600;
+    color:var(--text-dim);
+    letter-spacing:0.15em;
+    text-transform:uppercase;
+    margin-bottom: 0.6rem;
+  }
+  .phase-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight:700;
+    color:var(--text);
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .phase-list { list-style:none; }
+  .phase-list li {
+    font-size: 0.75rem;
+    font-weight:300;
+    color:var(--text-sub);
+    line-height: 1.8;
+    padding: 0.25rem 0 0.25rem 0.9rem;
+    position: relative;
+  }
+  .phase-list li::before {
+    content:'';
+    position:absolute; left:0; top:50%;
+    width:3px; height:3px;
+    background:var(--blue);
+    transform:translateY(-50%);
+  }
+
+  .outcomes-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    background: var(--bg3);
+  }
+  .out-cell {
+    padding: 2.5rem 2rem;
+    border-right: 1px solid var(--border);
+    text-align: center;
+  }
+  .out-cell:last-child { border-right:none; }
+  .out-val {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem;
+    font-weight:700;
+    color:var(--text);
+    line-height:1;
+    margin-bottom:0.4rem;
+  }
+  .out-val em { color:var(--blue); font-style:normal; }
+  .out-desc {
+    font-size:0.7rem;
+    font-weight:500;
+    color:var(--text-sub);
+    line-height:1.5;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+  }
+
+  /* ── EDUCATION ── */
+  .edu-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 0.5rem;
+  }
+  .edu-tile {
+    border: 1px solid var(--border);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    transition: border-color 0.3s;
+  }
+  .edu-tile:hover { border-color: var(--border2); }
+  .edu-deg {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .edu-school {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--blue);
+  }
+  .edu-yr {
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    margin-top: 0.25rem;
+  }
+
+  /* ── CONTACT ── */
+  .contact-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+    margin-top: 0.5rem;
+  }
+  .contact-cta-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem;
+    font-weight:700;
+    color: var(--text);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+  .contact-cta-title em { font-style:italic; color:var(--sky); }
+  .contact-cta-sub {
+    font-size:0.85rem;
+    font-weight:300;
+    color:var(--text-sub);
+    line-height:1.7;
+    margin-bottom:2rem;
+  }
+  .contact-details { display:flex; flex-direction:column; gap:1.25rem; }
+  .cd-row {
+    display:flex; align-items:center; gap:1rem;
+    padding: 1.25rem 1.5rem;
+    border: 1px solid var(--border);
+    transition: border-color 0.3s;
+    text-decoration:none;
+  }
+  .cd-row:hover { border-color: var(--border2); }
+  .cd-icon { font-size:1.1rem; flex-shrink:0; }
+  .cd-label { font-size:0.65rem; font-weight:600; color:var(--text-dim); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.2rem; }
+  .cd-value { font-size:0.88rem; font-weight:500; color:var(--text); }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 2rem 4rem;
+    border-top: 1px solid var(--border);
+    display:flex; justify-content:space-between; align-items:center;
+  }
+  .ft-left { font-size:0.7rem; color:var(--text-dim); }
+  .ft-right { font-size:0.7rem; color:var(--text-dim); letter-spacing:0.08em; text-transform:uppercase; }
+
+  /* ── REVEAL ── */
+  .reveal { opacity:0; transform:translateY(20px); transition: opacity 0.65s ease, transform 0.65s ease; }
+  .reveal.in { opacity:1; transform:translateY(0); }
+
+  @media (max-width:900px) {
+    nav { padding:1rem 1.5rem; }
+    .nav-links { display:none; }
+    .hero, .section { padding-left:1.5rem; padding-right:1.5rem; }
+    .comp-grid { grid-template-columns:1fr; }
+    .exp-row { grid-template-columns:1fr; }
+    .exp-meta { border-right:none; border-bottom:1px solid var(--border); }
+    .certs-row { grid-template-columns:1fr; }
+    .phases-grid { grid-template-columns:1fr 1fr; }
+    .outcomes-strip { grid-template-columns:1fr 1fr; }
+    .out-cell { border-bottom:1px solid var(--border); }
+    .edu-pair { grid-template-columns:1fr; }
+    .contact-inner { grid-template-columns:1fr; gap:3rem; }
+    .case-header { grid-template-columns:1fr; }
+    footer { flex-direction:column; gap:0.75rem; text-align:center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">Kriti <span>Tripathy</span></div>
+  <ul class="nav-links">
+    <li><a href="#competencies">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#certifications">Certifications</a></li>
+    <li><a href="#case">Case Study</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-status">
+    <div class="status-dot"></div>
+    Open to Opportunities
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-rules"></div>
+  <div class="hero-inner">
+    <div class="hero-kicker">Project Manager</div>
+    <h1 class="hero-name">
+      <span class="first">Kriti</span>
+      <span class="last">Tripathy</span>
+    </h1>
+    <p class="hero-tagline">
+      Agile & Scrum practitioner with <strong>2+ years</strong> delivering AI-integrated programmes across IIM and IIT institutions. I turn ambiguous requirements into structured delivery plans — on time, with data to back every decision.
+    </p>
+    <div class="hero-chips">
+      <span class="chip">Agile / Scrum</span>
+      <span class="chip">Sprint Planning</span>
+      <span class="chip">Stakeholder Management</span>
+      <span class="chip">NPS & KPI Tracking</span>
+      <span class="chip">AI Programme Delivery</span>
+      <span class="chip">Jira</span>
+      <span class="chip">Mumbai, India</span>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-val">2<em>+</em></div>
+        <div class="stat-desc">Years Experience</div>
+      </div>
+      <div>
+        <div class="stat-val">3</div>
+        <div class="stat-desc">IIM / IIT Programmes</div>
+      </div>
+      <div>
+        <div class="stat-val">5<em>+</em></div>
+        <div class="stat-desc">Cross-functional Teams Led</div>
+      </div>
+      <div>
+        <div class="stat-val">3</div>
+        <div class="stat-desc">Certifications</div>
+      </div>
+    </div>
+    <div class="hero-btns">
+      <a href="#case" class="btn-solid">View Case Study →</a>
+      <a href="#contact" class="btn-line">Get in Touch</a>
+    </div>
+  </div>
+</div>
+
+<!-- COMPETENCIES -->
+<section class="section section-alt" id="competencies">
+  <div class="sec-label">Core Competencies</div>
+  <div class="sec-title">What I Bring to<br><em>Every Project</em></div>
+  <div class="comp-grid reveal">
+    <div class="comp-card">
+      <div class="comp-num">01</div>
+      <div class="comp-name">Agile & Scrum Delivery</div>
+      <div class="comp-desc">Sprint planning, daily standups, retrospectives, and backlog grooming — running structured, iterative delivery cycles from kickoff to closure.</div>
+      <div class="comp-tags"><span class="ctag">Scrum</span><span class="ctag">Kanban</span><span class="ctag">XP</span><span class="ctag">Jira</span></div>
+    </div>
+    <div class="comp-card">
+      <div class="comp-num">02</div>
+      <div class="comp-name">Stakeholder Management</div>
+      <div class="comp-desc">Bridging technical teams, academic institutions, and business leadership — translating complex requirements into executable delivery plans.</div>
+      <div class="comp-tags"><span class="ctag">Requirements</span><span class="ctag">Alignment</span><span class="ctag">Communication</span></div>
+    </div>
+    <div class="comp-card">
+      <div class="comp-num">03</div>
+      <div class="comp-name">Data-Driven Prioritisation</div>
+      <div class="comp-desc">NPS tracking, learner analytics, KPI dashboards — using data to make the case for what to build next and what to deprioritise.</div>
+      <div class="comp-tags"><span class="ctag">NPS</span><span class="ctag">KPI</span><span class="ctag">Dashboards</span></div>
+    </div>
+    <div class="comp-card">
+      <div class="comp-num">04</div>
+      <div class="comp-name">AI Product Operations</div>
+      <div class="comp-desc">Coordinating LLM prompt frameworks, agentic AI workflows, and tool integrations — with hands-on experience at NVIDIA and Futurense.</div>
+      <div class="comp-tags"><span class="ctag">LLM</span><span class="ctag">GenAI</span><span class="ctag">Prompt Eng.</span></div>
+    </div>
+    <div class="comp-card">
+      <div class="comp-num">05</div>
+      <div class="comp-name">Programme Lifecycle Management</div>
+      <div class="comp-desc">End-to-end ownership across initiation, planning, execution, monitoring, and closure — with risk identification and mitigation at every stage.</div>
+      <div class="comp-tags"><span class="ctag">Scoping</span><span class="ctag">Risk Mgmt</span><span class="ctag">Closure</span></div>
+    </div>
+    <div class="comp-card">
+      <div class="comp-num">06</div>
+      <div class="comp-name">Tools & Platforms</div>
+      <div class="comp-desc">Hands-on with the modern PM stack — Jira for sprints, Google Workspace for collaboration, Excel for reporting, Python and SQL for data.</div>
+      <div class="comp-tags"><span class="ctag">Jira</span><span class="ctag">Excel</span><span class="ctag">Python</span><span class="ctag">SQL</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="section" id="experience">
+  <div class="sec-label">Work History</div>
+  <div class="sec-title">Professional<br><em>Experience</em></div>
+  <div class="exp-list reveal">
+
+    <div class="exp-row">
+      <div class="exp-meta">
+        <div class="exp-period">Jan 2026 — Present</div>
+        <div class="exp-org">Futurense Technologies</div>
+        <div class="exp-place">Mumbai, India</div>
+      </div>
+      <div class="exp-body">
+        <div class="exp-title">Program Operations Manager</div>
+        <ul class="exp-points">
+          <li>Owned end-to-end delivery of Agentic AI programmes across IIM Sirmaur, IIM Gandhinagar, and IIT Jodhpur — managing scope, timelines, and stakeholder alignment across partner institutions, faculty, and learners.</li>
+          <li>Ran agile-style sprint planning and review cycles to track programme milestones, resolve delivery blockers, and adapt curriculum based on real-time learner feedback.</li>
+          <li>Analysed NPS scores and engagement data to identify product experience gaps; led prioritisation and implementation of workflow improvements.</li>
+          <li>Coordinated AI tool integration into programme modules — bridging technical AI teams and non-technical academic stakeholders to ensure smooth adoption.</li>
+          <li>Produced programme intelligence dashboards and leadership reports to support data-driven decisions on cohort design and feature rollout.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-row">
+      <div class="exp-meta">
+        <div class="exp-period">Aug — Dec 2025</div>
+        <div class="exp-org">Great Learning</div>
+        <div class="exp-place">Mumbai, India</div>
+      </div>
+      <div class="exp-body">
+        <div class="exp-title">Program Manager</div>
+        <ul class="exp-points">
+          <li>Managed full project lifecycle for Johns Hopkins University AI programme cohorts — from requirements gathering and onboarding to delivery and post-programme retrospectives.</li>
+          <li>Primary liaison between medical professionals (end users), AI faculty (content owners), and platform tech teams — resolving blockers and aligning delivery milestones.</li>
+          <li>Tracked sprint-level KPIs, engagement analytics, and NPS; delivered prioritisation recommendations to senior leadership.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-row">
+      <div class="exp-meta">
+        <div class="exp-period">Oct 2024 — Aug 2025</div>
+        <div class="exp-org">NVIDIA (via Randstad)</div>
+        <div class="exp-place">Mumbai, India</div>
+      </div>
+      <div class="exp-body">
+        <div class="exp-title">Associate Prompt / Gen AI Engineer</div>
+        <ul class="exp-points">
+          <li>Authored structured prompt frameworks and annotated datasets — serving as product documentation and specification lead within the AI model development pipeline.</li>
+          <li>Benchmarked and validated output quality for spatial LLMs (Groot, GPT-Spatial), communicating insights to technical and business stakeholders.</li>
+          <li>Delivered internal training on generative AI workflows, driving cross-team adoption.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-row">
+      <div class="exp-meta">
+        <div class="exp-period">Mar — Sep 2024</div>
+        <div class="exp-org">Consultasia / 221B Bakers ST</div>
+        <div class="exp-place">Freelance</div>
+      </div>
+      <div class="exp-body">
+        <div class="exp-title">Talent & Program Operations</div>
+        <ul class="exp-points">
+          <li>Managed end-to-end operations for talent acquisition and programme delivery — requirements gathering, pipeline design, and structured onboarding on schedule.</li>
+          <li>Built performance tracking dashboards and coordinated academic partnerships for placement initiatives.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-row">
+      <div class="exp-meta">
+        <div class="exp-period">2023</div>
+        <div class="exp-org">State Bank of India</div>
+        <div class="exp-place">Research Intern</div>
+      </div>
+      <div class="exp-body">
+        <div class="exp-title">Research Intern</div>
+        <ul class="exp-points">
+          <li>Conducted structured user research interviews and behaviour mapping to identify communication gaps in financial products; delivered a findings and recommendations report to leadership.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section class="section section-alt" id="certifications">
+  <div class="sec-label">Credentials</div>
+  <div class="sec-title">Certifications &<br><em>Training</em></div>
+  <div class="certs-row reveal">
+    <div class="cert-tile">
+      <div class="cert-tile-accent"></div>
+      <div class="cert-id">CERT · 01</div>
+      <div class="cert-name">Agile Project Management: Agile, Scrum, Kanban & XP</div>
+      <div class="cert-issuer">Udemy</div>
+      <div class="cert-year">2025</div>
+      <div class="cert-badge">Completed</div>
+    </div>
+    <div class="cert-tile">
+      <div class="cert-tile-accent"></div>
+      <div class="cert-id">CERT · 02</div>
+      <div class="cert-name">Basics of Scrum</div>
+      <div class="cert-issuer">Great Learning</div>
+      <div class="cert-year">2025</div>
+      <div class="cert-badge">Completed</div>
+    </div>
+    <div class="cert-tile">
+      <div class="cert-tile-accent"></div>
+      <div class="cert-id">CERT · 03</div>
+      <div class="cert-name">Project Management: Idea to Execution</div>
+      <div class="cert-issuer">Udemy</div>
+      <div class="cert-year">2025</div>
+      <div class="cert-badge">Completed</div>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDY -->
+<section class="section" id="case">
+  <div class="sec-label">Applied Learning</div>
+  <div class="sec-title">Project Case Study</div>
+  <div class="case-wrapper reveal">
+    <div class="case-header">
+      <div>
+        <div class="case-pill">Cert Applied: Project Management — Idea to Execution · Udemy</div>
+        <div class="case-title">AI EdTech Programme Delivery Framework</div>
+        <div class="case-sub">A structured end-to-end delivery framework for AI-integrated academic programmes — designed to solve the operational chaos observed managing cohorts across IIM and IIT institutions, where fragmented communication and reactive decision-making were degrading learner experience and NPS.</div>
+      </div>
+      <div class="case-meta-block">
+        <div class="cmb-row"><div class="cmb-label">Type</div><div class="cmb-val">Delivery Framework</div></div>
+        <div class="cmb-row"><div class="cmb-label">Domain</div><div class="cmb-val">AI EdTech / Ops</div></div>
+        <div class="cmb-row"><div class="cmb-label">Role</div><div class="cmb-val">Project Manager</div></div>
+        <div class="cmb-row"><div class="cmb-label">Method</div><div class="cmb-val">Agile / Scrum</div></div>
+        <div class="cmb-row"><div class="cmb-label">Status</div><div class="cmb-val">Completed 2025</div></div>
+      </div>
+    </div>
+
+    <div class="phases-grid">
+      <div class="phase">
+        <div class="phase-num">Phase 01</div>
+        <div class="phase-name">Initiation & Planning</div>
+        <ul class="phase-list">
+          <li>Defined project charter: objectives, stakeholders, timeline, KPIs</li>
+          <li>Mapped work breakdown structure (WBS) across onboarding, delivery, and closure phases</li>
+          <li>Identified risks: faculty availability, AI tool adoption friction, learner drop-off</li>
+          <li>Success criteria: NPS ≥ 8, completion rate ≥ 85%, issue resolution ≤ 48hrs</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-num">Phase 02</div>
+        <div class="phase-name">Sprint Execution</div>
+        <ul class="phase-list">
+          <li>Created sprint plan: 2-week cycles with defined reviews and retrospective checkpoints</li>
+          <li>Ran weekly standups with faculty, tech, and learner support teams</li>
+          <li>Managed Jira board with epics for onboarding, content delivery, and feedback loops</li>
+          <li>Tracked velocity and backlog health; escalated blockers within 24hrs</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-num">Phase 03</div>
+        <div class="phase-name">Monitoring & Control</div>
+        <ul class="phase-list">
+          <li>Tracked NPS and engagement metrics cohort-by-cohort</li>
+          <li>Coordinated AI tool rollout with platform team — 3-week integration plan</li>
+          <li>Delivered bi-weekly leadership dashboards with programme health status</li>
+          <li>Managed scope creep: deferred 3 features via backlog grooming</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-num">Phase 04</div>
+        <div class="phase-name">Closure & Review</div>
+        <ul class="phase-list">
+          <li>Ran retrospective: identified top 3 friction points, documented solutions</li>
+          <li>Produced SOP documentation for repeatable delivery across future cohorts</li>
+          <li>Presented data-backed improvement roadmap to leadership</li>
+          <li>Framework adopted as template for all subsequent programme cohorts</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="outcomes-strip">
+      <div class="out-cell">
+        <div class="out-val">3</div>
+        <div class="out-desc">IIM & IIT Institutions Managed</div>
+      </div>
+      <div class="out-cell">
+        <div class="out-val">85<em>%+</em></div>
+        <div class="out-desc">Programme Completion Rate Target</div>
+      </div>
+      <div class="out-cell">
+        <div class="out-val">2<em>wk</em></div>
+        <div class="out-desc">Sprint Cycle — Review & Retro</div>
+      </div>
+      <div class="out-cell">
+        <div class="out-val">↑<em>NPS</em></div>
+        <div class="out-desc">Learner Satisfaction Improved</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section class="section section-alt">
+  <div class="sec-label">Academic Background</div>
+  <div class="sec-title">Education</div>
+  <div class="edu-pair reveal">
+    <div class="edu-tile">
+      <div class="edu-deg">MCA — Master of Computer Applications</div>
+      <div class="edu-school">Amity University</div>
+      <div class="edu-yr">2022 — 2024</div>
+    </div>
+    <div class="edu-tile">
+      <div class="edu-deg">B.Sc. Economics (Hons)</div>
+      <div class="edu-school">Amity University Kolkata</div>
+      <div class="edu-yr">2019 — 2022</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section" id="contact">
+  <div class="sec-label">Get in Touch</div>
+  <div class="sec-title">Let's Work<br><em>Together</em></div>
+  <div class="contact-inner reveal">
+    <div>
+      <div class="contact-cta-title">Open to Project<br><em>Manager Roles</em></div>
+      <div class="contact-cta-sub">I'm actively looking for PM and programme management roles where I can bring structured delivery, agile thinking, and AI domain expertise to the table. Mumbai-based, open to hybrid.</div>
+      <a href="mailto:krititripathy43@gmail.com" class="btn-solid">Send an Email →</a>
+    </div>
+    <div class="contact-details">
+      <a href="mailto:krititripathy43@gmail.com" class="cd-row" style="text-decoration:none">
+        <span class="cd-icon">✉</span>
+        <div><div class="cd-label">Email</div><div class="cd-value">krititripathy43@gmail.com</div></div>
+      </a>
+      <div class="cd-row">
+        <span class="cd-icon">📞</span>
+        <div><div class="cd-label">Phone</div><div class="cd-value">+91-7294187179</div></div>
+      </div>
+      <div class="cd-row">
+        <span class="cd-icon">📍</span>
+        <div><div class="cd-label">Location</div><div class="cd-value">Mumbai, India</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="ft-left">© 2025 Kriti Tripathy — Project Manager Portfolio</div>
+  <div class="ft-right">Mumbai · India · Open to Work</div>
+</footer>
+
+<script>
+  const els = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  els.forEach(e => io.observe(e));
+</script>
+</body>
+</html>
